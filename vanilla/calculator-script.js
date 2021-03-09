@@ -1,5 +1,6 @@
 var gridItems = document.getElementsByClassName("grid-item")
-// var textView = document.getElementById("textview")
+var textView = document.getElementById("textview")
+var inputString=''
 var lastSelected=[]
 var firstNumber=''
 var secondNumber=''
@@ -11,14 +12,22 @@ for(var i =0; i< gridItems.length; i++) {
 
     var onClick = function(n, id) {
         return function(){
+            inputString = document.getElementById(id).textContent
             if(isNaN(n)){
-                if(firstNumber.length === 0){
+                if(id === 'clear') {
+                    textView.textContent = ''
+                    firstNumber=''
+                    secondNumber=''
+                    lastSelected=[]
+                    return
+                }
+                if(firstNumber.length === 0) {
                     firstNumber = Number.parseInt(lastSelected.join(''))
-                } else if(secondNumber.length === 0){
+                } else if(secondNumber.length === 0) {
                     secondNumber = Number.parseInt(lastSelected.join(''))
                 }
                 if(id === 'equals') {
-                    console.log(operation(firstNumber, secondNumber))
+                    inputString = '=' + operation(firstNumber, secondNumber)
                     firstNumber = ''
                     secondNumber = ''
                 } else {
@@ -27,8 +36,8 @@ for(var i =0; i< gridItems.length; i++) {
                 lastSelected = []
             } else {
                 lastSelected.push(n)
-                // textView.textContent = lastSelected.join('')
             }
+            textView.textContent = textView.textContent + inputString
         }
     }
 

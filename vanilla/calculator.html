@@ -5,7 +5,7 @@
             .grid-container {
               display: grid;
               grid-template-columns: auto auto auto;
-              background-color: #2196F3;
+              background-color: #687c8d;
               padding: 10px;
               width: 160px;
             }
@@ -16,7 +16,7 @@
               font-size: 18px;
               text-align: center;
             }
-            #textview {
+            #textview, #resultview {
                  grid-column: 1 / span 3;
             }
             </style>
@@ -24,6 +24,7 @@
     </head>
     <body>
         <div class="grid-container">
+            <div class="grid-item" id="resultview"></div>
             <div class="grid-item" id="textview"></div>
             <div class="grid-item" id="num1">1</div>
             <div class="grid-item" id="num2">2</div>
